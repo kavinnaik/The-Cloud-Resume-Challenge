@@ -1,0 +1,59 @@
+name: Deploy Cloud Resume Portfolio
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.7.5
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Terraform init
+        working-directory: ./terraform
+        run: terraform init -input=false
+
+      - name: Terraform apply
+        working-directory: ./terraform
+        run: terraform apply -input=false -auto-approve
+
+      - name: Get S3 bucket name from Terraform outputs
+        id: tf-outputs
+        working-directory: ./terraform
+        run: |
+          BUCKET=$(terraform output -raw s3_bucket_name)
+          echo "bucket_name=$BUCKET" >> "$GITHUB_OUTPUT"
+
+      - name: Sync static site to S3
+        run: |
+          aws s3 sync . "s3://${{ steps.tf-outputs.outputs.bucket_name }}" \
+            --exclude "terraform/*" \
+            --exclude ".terraform/*" \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "deploy-local.ps1" \
+            --delete
+
+

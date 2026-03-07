@@ -1,5 +1,24 @@
+.DS_Store
+Thumbs.db
+
+# Node / tooling (future-proof)
+node_modules/
+dist/
+build/
+
+# Python
+__pycache__/
+*.pyc
+
+# Terraform
 .terraform/
 terraform/.terraform/
 *.tfstate
 *.tfstate.*
 .terraform.lock.hcl
+
+# Local environment
+.env
+.venv/
+
+
