@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kavin Naik | Cloud & DevOps Portfolio</title>
+    <meta
+      name="description"
+      content="Cloud, DevOps, and software engineering portfolio of Kavin Naik, showcasing AWS, Terraform, CI/CD, Docker, and Kubernetes projects as part of the Cloud Resume Challenge."
+    />
+    <meta name="author" content="Kavin Naik" />
+
+    <!-- Open Graph for SEO -->
+    <meta property="og:title" content="Kavin Naik | Cloud & DevOps Engineer" />
+    <meta
+      property="og:description"
+      content="Portfolio and Cloud Resume Challenge site for Kavin Naik, highlighting AWS, DevOps, and infrastructure projects."
+    />
+    <meta property="og:type" content="website" />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#hero" class="logo" aria-label="Kavin Naik home">
+          <span class="logo-mark">KN</span>
+          <span class="logo-text">Kavin Naik</span>
+        </a>
+        <nav class="nav" aria-label="Primary navigation">
+          <button
+            class="nav-toggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span>
+          </button>
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#cloud-resume">Cloud Resume</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section id="hero" class="hero section">
+        <div class="container hero-grid">
+          <div class="hero-text reveal">
+            <p class="eyebrow">Cloud Resume Challenge</p>
+            <h1>
+              Cloud, DevOps &<br />
+              Software Engineering
+            </h1>
+            <p class="subtitle">
+              I’m Kavin Naik, an aspiring Cloud and DevOps engineer focused on building
+              reliable, scalable infrastructure with AWS, Terraform, Docker,
+              Kubernetes, and CI/CD.
+            </p>
+            <div class="hero-cta">
+              <a href="#projects" class="btn btn-primary">View Projects</a>
+              <a href="#contact" class="btn btn-ghost">Contact Me</a>
+              <a
+                href="assets/KavinNaik_Resume.pdf"
+                class="btn btn-ghost"
+                target="_blank"
+                rel="noreferrer"
+                download
+              >
+                Download Resume
+              </a>
+            </div>
+            <div class="hero-meta">
+              <span>📍 Mumbai, India</span>
+              <span class="divider">•</span>
+              <span>AWS Cloud | DevOps | CS & Design (BE)</span>
+            </div>
+            <div class="hero-counter" aria-live="polite">
+              <span class="counter-label">Visitors</span>
+              <span id="visitor-count" class="counter-value">--</span>
+            </div>
+          </div>
+          <div class="hero-card reveal">
+            <div class="hero-card-inner">
+              <h2>Cloud-native solutions, from idea to deployment.</h2>
+              <p>
+                I design and ship end-to-end cloud architectures using AWS, IaC,
+                and automated pipelines—backed by real project experience in
+                CI/CD, Kubernetes, and serverless.
+              </p>
+              <ul class="hero-highlights">
+                <li>Certified AWS Cloud Practitioner</li>
+                <li>Oracle Cloud Infrastructure Certified</li>
+                <li>Hands-on CI/CD with GitHub Actions</li>
+                <li>Production-style Kubernetes deployments</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="section">
+        <div class="container section-header reveal">
+          <p class="eyebrow">About</p>
+          <h2>About Me</h2>
+          <p class="section-subtitle">
+            I’m a Cloud and DevOps enthusiast who enjoys what goes on 
+            behind the scenes of modern applications. From building scalable cloud 
+            infrastructure on AWS to automating deployments with Docker, Kubernetes 
+            and CI/CD, I like creating reliable systems that power real-world applications. 🚀
+          </p>
+        </div>
+        <div class="container about-grid">
+          <div class="about-card reveal">
+            <h3>Profile</h3>
+            <p>
+              I’m a recent Computer Science Engineering graduate with a strong interest in 
+              Cloud Computing and DevOps, passionate about building scalable and reliable systems. 
+              During my internships, I gained hands on experience working with AWS services, 
+              containerization, and CI/CD pipelines while developing and deploying real world applications.
+            </p>
+            <p>
+              I enjoy understanding what happens behind the scenes of modern software, from infrastructure 
+              provisioning to automated deployments. I’m always exploring new tools and technologies to improve 
+              efficiency, automate workflows, and build systems that are secure, scalable, and production-ready.
+            </p>
+          </div>
+          <div class="about-card reveal">
+            <h3>Cloud & DevOps Focus</h3>
+            <ul class="pill-list">
+              <li>AWS (EC2, S3, IAM, Lambda)</li>
+              <li>Oracle Cloud Infrastructure</li>
+              <li>Terraform & Infrastructure as Code</li>
+              <li>Docker & Containerization</li>
+              <li>Kubernetes (Kind, Ingress, services)</li>
+              <li>GitHub Actions CI/CD</li>
+            </ul>
+          </div>
+          <div class="about-card reveal">
+            <h3>Education Snapshot</h3>
+            <p>
+              BE Computer Science &amp; Design, New Horizon Institute of Technology and
+              Management, Thane (2021–2025) – CGPA 6.95.
+            </p>
+            <p class="about-meta">
+              Active in student leadership as Joint Technical Secretary (CS Dept. Student
+              Council) and Secretary (CSI Council), organizing workshops and events for
+              200+ students.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" class="section section-alt">
+        <div class="container section-header reveal">
+          <p class="eyebrow">Skills</p>
+          <h2>Cloud & Engineering Skills</h2>
+        </div>
+        <div class="container skills-grid">
+          <article class="skill-card reveal">
+            <h3>AWS & Cloud</h3>
+            <p>
+              Designing and deploying secure, scalable workloads on AWS using
+              best practices for networking, identity, and storage.
+            </p>
+            <ul class="list">
+              <li>EC2, S3, IAM, Lambda</li>
+              <li>CloudFront, Route 53</li>
+              <li>Serverless architectures</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3>DevOps & CI/CD</h3>
+            <p>
+              Building repeatable pipelines that take code from commit to
+              production with quality gates and infrastructure automation.
+            </p>
+            <ul class="list">
+              <li>GitHub Actions CI/CD</li>
+              <li>Automated testing & deployment</li>
+              <li>Blue/green style rollouts</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3>Containers & Kubernetes</h3>
+            <p>
+              Packaging and orchestrating services with Docker and Kubernetes to
+              achieve portability and resilience.
+            </p>
+            <ul class="list">
+              <li>Docker images & Compose</li>
+              <li>Kubernetes with Kind</li>
+              <li>NGINX Ingress Controller</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3>Infrastructure as Code</h3>
+            <p>
+              Managing infrastructure lifecycle declaratively using Terraform
+              with reusable modules and remote state.
+            </p>
+            <ul class="list">
+              <li>Terraform on AWS</li>
+              <li>Security groups & networking</li>
+              <li>Immutable infra patterns</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3>Programming & Data</h3>
+            <p>
+              Writing reliable backend and scripting logic with a focus on
+              clarity, observability, and performance.
+            </p>
+            <ul class="list">
+              <li>Python, Bash</li>
+              <li>MongoDB, DynamoDB</li>
+              <li>REST APIs & serverless functions</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3>Web Engineering</h3>
+            <p>
+              Building responsive, accessible interfaces that feel fast and
+              modern on any device.
+            </p>
+            <ul class="list">
+              <li>HTML, CSS, JavaScript</li>
+              <li>React, component-driven UI</li>
+              <li>Performance and accessibility</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="section">
+        <div class="container section-header reveal">
+          <p class="eyebrow">Projects</p>
+          <h2>Selected Cloud & DevOps Projects</h2>
+          <p class="section-subtitle">
+            Real-world style projects demonstrating cloud infrastructure,
+            automation, and application deployment.
+          </p>
+        </div>
+        <div class="container projects-grid">
+          <article class="project-card reveal">
+            <div class="project-header">
+              <h3>CI/CD Pipeline for Python App</h3>
+              <span class="project-tag">CI/CD · Terraform · AWS</span>
+            </div>
+            <p>
+              Provisioned AWS infrastructure for a Python application and
+              implemented a three-stage GitHub Actions pipeline to build, test,
+              and deploy automatically.
+            </p>
+            <ul class="project-meta">
+              <li><strong>Tech stack</strong>: AWS EC2, Terraform, Docker, GitHub Actions</li>
+              <li>
+                <strong>Highlights</strong>: Automated build/test/push,
+                Terraform apply, and deployment to EC2 with standardized
+                workflows.
+              </li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/kavinnaik/CI-CD-Pipeline-for-Python-Apps" target="_blank" rel="noreferrer"
+                >GitHub Repo</a
+              >
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-header">
+              <h3>Three-Tier App on Kubernetes with CI</h3>
+              <span class="project-tag">Kubernetes · GitHub Actions</span>
+            </div>
+            <p>
+              Deployed a three-tier web application (NGINX frontend, Python
+              Flask backend, PostgreSQL database) on a local Kubernetes cluster
+              using Kind.
+            </p>
+            <ul class="project-meta">
+              <li>
+                <strong>Tech stack</strong>: Docker, Kubernetes (Kind), NGINX
+                Ingress, GitHub Actions, PostgreSQL
+              </li>
+              <li>
+                <strong>Highlights</strong>: Automated deployment workflows, Ingress
+                configuration, and service-to-service communication.
+              </li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/kavinnaik/three-tier-k8s" target="_blank" rel="noreferrer"
+                >GitHub Repo</a
+              >
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-header">
+              <h3>Network Intrusion Detection System</h3>
+              <span class="project-tag">Python · ML · Docker</span>
+            </div>
+            <p>
+              Built an ML pipeline to detect network intrusions using KNN and
+              Random Forest models, with containerized services and a JS
+              dashboard for insights.
+            </p>
+            <ul class="project-meta">
+              <li>
+                <strong>Tech stack</strong>: Python, scikit-learn, MongoDB,
+                Docker, JavaScript
+              </li>
+              <li>
+                <strong>Highlights</strong>: Log ingestion into MongoDB,
+                containerized deployment, and interactive visualization.
+              </li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/kavinnaik/Network-Intrusion-Detection-System" target="_blank" rel="noreferrer"
+                >GitHub Repo</a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Cloud Resume Challenge -->
+      <section id="cloud-resume" class="section section-alt">
+        <div class="container section-header reveal">
+          <p class="eyebrow">Cloud Resume Challenge</p>
+          <h2>Architecture of This Portfolio</h2>
+          <p class="section-subtitle">
+            This website is designed to satisfy the Cloud Resume Challenge using
+            AWS, serverless, and Infrastructure as Code.
+          </p>
+        </div>
+        <div class="container cloud-grid">
+          <div class="cloud-card reveal">
+            <h3>End-to-End AWS Architecture</h3>
+            <p>
+              The portfolio is deployed as a static website on Amazon S3, served
+              securely via CloudFront, and mapped to a custom domain in
+              Route&nbsp;53. A serverless visitor counter uses API Gateway,
+              Lambda, and DynamoDB.
+            </p>
+            <ul class="list">
+              <li>S3 static website hosting</li>
+              <li>CloudFront CDN with HTTPS</li>
+              <li>Route 53 DNS and domain</li>
+              <li>Lambda + DynamoDB visitor counter</li>
+              <li>Terraform-managed Infrastructure as Code</li>
+              <li>GitHub Actions CI/CD pipeline</li>
+            </ul>
+          </div>
+          <div class="cloud-card cloud-diagram reveal" aria-label="High-level architecture diagram">
+            <h3>High-Level Architecture</h3>
+            <div class="diagram">
+              <div class="diagram-row">
+                <div class="diagram-node">User Browser</div>
+                <div class="diagram-arrow">➡</div>
+                <div class="diagram-node">CloudFront CDN</div>
+                <div class="diagram-arrow">➡</div>
+                <div class="diagram-node">S3 Static Site</div>
+              </div>
+              <div class="diagram-row diagram-row-secondary">
+                <div class="diagram-node">User Browser</div>
+                <div class="diagram-arrow">➡</div>
+                <div class="diagram-node">API Gateway</div>
+                <div class="diagram-arrow">➡</div>
+                <div class="diagram-node">Lambda</div>
+                <div class="diagram-arrow">➡</div>
+                <div class="diagram-node">DynamoDB</div>
+              </div>
+              <p class="diagram-caption">
+                All resources are provisioned and version-controlled using
+                Terraform and deployed via GitHub Actions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section id="certifications" class="section">
+        <div class="container section-header reveal">
+          <p class="eyebrow">Certifications</p>
+          <h2>Cloud Certifications</h2>
+          <p class="section-subtitle">
+            Credentials that validate my skills across AWS and Oracle Cloud Infrastructure.
+          </p>
+        </div>
+        <div class="container certs-grid">
+          <div class="certs-column reveal">
+            <h3 class="certs-heading">Amazon Web Services</h3>
+            <div class="certs-panel">
+              <article class="cert-badge">
+                <div class="cert-badge-main">
+                  <div class="cert-icon cert-icon--large">
+                    <img
+                      src="assets/images/awslogo.png"
+                      alt="AWS certification badge"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div>
+                    <h4>AWS Certified Cloud Practitioner</h4>
+                    <p class="cert-issuer">Amazon Web Services</p>
+                  </div>
+                </div>
+                <p class="cert-meta">Foundational understanding of AWS Cloud concepts, security, pricing, and architecture.</p>
+              </article>
+            </div>
+          </div>
+          <div class="certs-column reveal">
+            <h3 class="certs-heading">Oracle Cloud Infrastructure</h3>
+            <div class="certs-panel">
+              <article class="cert-badge">
+                <div class="cert-badge-main">
+                  <div class="cert-icon">
+                    <img
+                      src="assets/images/ocifound.jpg"
+                      alt="OCI Foundations certification badge"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div>
+                    <h4>OCI 2025 Certified Foundations Associate</h4>
+                    <p class="cert-issuer">Oracle Cloud Infrastructure</p>
+                  </div>
+                </div>
+                <p class="cert-meta">Core cloud concepts, services, and security on Oracle Cloud.</p>
+              </article>
+              <article class="cert-badge">
+                <div class="cert-badge-main">
+                  <div class="cert-icon">
+                    <img
+                      src="assets/images/ocifound.jpg"
+                      alt="OCI AI Foundations certification badge"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div>
+                    <h4>OCI 2025 Certified AI Foundations Associate</h4>
+                    <p class="cert-issuer">Oracle Cloud Infrastructure</p>
+                  </div>
+                </div>
+                <p class="cert-meta">Applied AI and ML capabilities on OCI with practical use cases.</p>
+              </article>
+              <article class="cert-badge">
+                <div class="cert-badge-main">
+                  <div class="cert-icon">
+                    <img
+                      src="assets/images/ociprof.png"
+                      alt="OCI Developer Professional certification badge"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div>
+                    <h4>OCI 2025 Developer Professional</h4>
+                    <p class="cert-issuer">Oracle Cloud Infrastructure</p>
+                  </div>
+                </div>
+                <p class="cert-meta">Designing and building cloud-native applications on Oracle Cloud.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience & Education -->
+      <section id="experience" class="section">
+        <div class="container section-header reveal">
+          <p class="eyebrow">Experience</p>
+          <h2>Professional Experience</h2>
+        </div>
+        <div class="container experience-grid">
+          <article class="experience-card reveal">
+            <header class="experience-header">
+              <div class="experience-header-main">
+                <div class="experience-logo">
+                  <img
+                    src="assets/images/f13tech_logo.jpg"
+                    alt="F13 Technologies logo"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <h3 class="experience-company">F13 Technologies</h3>
+                  <p class="experience-role">AWS Cloud Intern</p>
+                </div>
+              </div>
+              <div class="experience-badges">
+                <span class="badge badge-muted">Remote</span>
+                <span class="badge badge-muted">Dec 2024 – Mar 2025</span>
+                <span class="badge badge-soft">Internship</span>
+              </div>
+            </header>
+            <ul class="experience-points">
+              <li>
+                Led a team of 5+ interns to build and deploy cloud-based
+                solutions, improving efficiency by 25% through standardized
+                deployment practices.
+              </li>
+              <li>
+                Built an HR Management System on AWS with employee records,
+                payroll, and leave management using S3 for storage and IAM for
+                access control.
+              </li>
+              <li>
+                Developed an IT Service Recommendation System where users input
+                requirements and receive tailored AWS service suggestions using
+                Lambda and DynamoDB.
+              </li>
+            </ul>
+          </article>
+
+          <article class="experience-card reveal">
+            <header class="experience-header">
+              <div class="experience-header-main">
+                <div class="experience-logo">
+                  <img
+                    src="assets/images/shripriti_logo.jpg"
+                    alt="Shripriti Educational and IT Hub logo"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <h3 class="experience-company">Shripriti Educational &amp; IT Hub</h3>
+                  <p class="experience-role">Web Development Intern</p>
+                </div>
+              </div>
+              <div class="experience-badges">
+                <span class="badge badge-muted">Remote</span>
+                <span class="badge badge-muted">Feb 2024 – Mar 2024</span>
+                <span class="badge badge-soft">Internship</span>
+              </div>
+            </header>
+            <ul class="experience-points">
+              <li>
+                Built and deployed three responsive web applications using HTML,
+                CSS, JavaScript, and React.
+              </li>
+              <li>
+                Debugged an existing codebase, reducing load time by 30% and
+                improving user experience.
+              </li>
+              <li>
+                Developed reusable UI components and implemented responsive
+                layouts using CSS frameworks.
+              </li>
+            </ul>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education" class="section section-alt">
+        <div class="container section-header reveal">
+          <p class="eyebrow">Education</p>
+          <h2>Academic Background</h2>
+        </div>
+        <div class="container education-wrap">
+          <article class="about-card reveal">
+            <h3>BE Computer Science &amp; Design</h3>
+            <p class="education-meta">
+              New Horizon Institute of Technology and Management, Thane · 2021 – 2025 · CGPA 6.95
+            </p>
+            <p>
+              A program that blends core computer science with design, focusing on building usable,
+              human-centered software systems while maintaining strong engineering foundations.
+            </p>
+            <h4>Leadership & Activities</h4>
+            <ul class="list">
+              <li>
+                Joint Technical Secretary (CS Dept. Student Council) and Secretary (CSI Council).
+              </li>
+              <li>
+                Led a 20-member team for Techfest and organized technical workshops and events for 200+ students.
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section section-alt">
+        <div class="container section-header reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Let’s Build Something</h2>
+          <p class="section-subtitle">
+            Open to roles and opportunities in Cloud, DevOps, and software
+            engineering.
+          </p>
+        </div>
+        <div class="container contact-grid">
+          <div class="contact-card reveal">
+            <h3>Reach Out</h3>
+            <ul class="contact-list">
+              <li>
+                <span>Email</span>
+                <a href="mailto:kavinnaik19@gmail.com">kavinnaik19@gmail.com</a>
+              </li>
+              <li>
+                <span>LinkedIn</span>
+                <a
+                  href="https://www.linkedin.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  >linkedin.com/in/kavin-naik</a
+                >
+              </li>
+              <li>
+                <span>GitHub</span>
+                <a
+                  href="https://github.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  >github.com/kavinnaik</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="contact-card reveal">
+            <h3>Quick Contact Form</h3>
+            <form
+              class="contact-form"
+              aria-label="Contact form"
+              onsubmit="return false;"
+            >
+              <div class="field">
+                <label for="name">Name</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Submit (demo only)
+              </button>
+              <p class="form-note">
+                This form is intentionally non-functional for the challenge, but
+                can be wired to an email or API later.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>
+          © <span id="year"></span> Kavin Naik. Built for the
+          <span class="highlight">Cloud Resume Challenge</span>.
+        </p>
+        <a href="#hero" class="back-to-top">Back to top</a>
+      </div>
+    </footer>
+
+    <!-- Set by Terraform output (visitor_api_url). Replace the string below
+         with your actual API Gateway invoke URL. -->
+    <script>
+      window.VISITOR_COUNT_API_URL = "https://qfnze65tw6.execute-api.ap-south-1.amazonaws.com/visitors";
+    </script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
+
