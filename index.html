@@ -1,700 +1,1148 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kavin Naik | Cloud & DevOps Portfolio</title>
-    <meta
-      name="description"
-      content="Cloud, DevOps, and software engineering portfolio of Kavin Naik, showcasing AWS, Terraform, CI/CD, Docker, and Kubernetes projects as part of the Cloud Resume Challenge."
-    />
-    <meta name="author" content="Kavin Naik" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kavin Naik — Cloud & DevOps Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- Open Graph for SEO -->
-    <meta property="og:title" content="Kavin Naik | Cloud & DevOps Engineer" />
-    <meta
-      property="og:description"
-      content="Portfolio and Cloud Resume Challenge site for Kavin Naik, highlighting AWS, DevOps, and infrastructure projects."
-    />
-    <meta property="og:type" content="website" />
+    :root {
+      --bg: #f7f5f2;
+      --surface: #ffffff;
+      --border: #e8e4df;
+      --text: #1a1714;
+      --muted: #7a7370;
+      --accent: #c8a97e;
+      --accent-dark: #a8845a;
+      --tag-bg: #ede9e4;
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
 
-    <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a href="#hero" class="logo" aria-label="Kavin Naik home">
-          <span class="logo-mark">KN</span>
-          <span class="logo-text">Kavin Naik</span>
-        </a>
-        <nav class="nav" aria-label="Primary navigation">
-          <button
-            class="nav-toggle"
-            aria-label="Toggle navigation menu"
-            aria-expanded="false"
-          >
-            <span></span><span></span>
-          </button>
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#cloud-resume">Cloud Resume</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(247, 245, 242, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    nav.scrolled { border-bottom-color: var(--border); }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--text);
+      color: var(--bg) !important;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 0.875rem !important;
+      font-weight: 500 !important;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--accent-dark) !important; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      max-width: 900px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.35s forwards;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent-dark);
+    }
+
+    .hero-sub {
+      margin-top: 32px;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 520px;
+      font-weight: 300;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.5s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 48px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.65s forwards;
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+      padding: 14px 32px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+
+    .btn-secondary {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--text); }
+    .btn-secondary::after { content: '↓'; font-size: 0.85rem; }
+
+    .hero-meta {
+      margin-top: 80px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.8s forwards;
+    }
+    .hero-stat { display: flex; flex-direction: column; gap: 4px; }
+    .hero-stat-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--text);
+    }
+    .hero-stat-label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+    .hero-divider { width: 1px; height: 40px; background: var(--border); }
+
+    .visitor-count { font-family: var(--font-display); font-size: 2rem; line-height: 1; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 48px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 56px;
+    }
+    .section-label::before {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--border);
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--surface); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .about-headline em { font-style: italic; color: var(--accent-dark); }
+
+    .about-body {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      font-weight: 300;
+      margin-top: 24px;
+    }
+
+    .about-right { display: flex; flex-direction: column; gap: 32px; }
+
+    .about-focus-item {
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+    }
+    .about-focus-item:last-child { border-bottom: 1px solid var(--border); }
+    .about-focus-title {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+    .about-focus-text { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--bg); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      padding: 36px 32px;
+      transition: background 0.2s;
+    }
+    .skill-card:hover { background: var(--bg); }
+
+    .skill-icon {
+      width: 40px; height: 40px;
+      background: var(--tag-bg);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .skill-name {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+    .tag {
+      font-size: 0.72rem;
+      background: var(--tag-bg);
+      color: var(--muted);
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--surface); }
+
+    .projects-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px;
+    }
+    .projects-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .projects-headline em { font-style: italic; color: var(--accent-dark); }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+    }
+    .project-card:last-child { border-bottom: 1px solid var(--border); }
+
+    .project-num {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .project-right { display: flex; flex-direction: column; gap: 20px; }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .project-highlights {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .project-highlights li {
+      font-size: 0.875rem;
+      color: var(--muted);
+      padding-left: 16px;
+      position: relative;
+    }
+    .project-highlights li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      width: fit-content;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .project-link:hover { border-color: var(--text); color: var(--accent-dark); }
+    .project-link::after { content: '↗'; font-size: 0.85rem; }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--bg); }
+
+    .exp-grid { display: flex; flex-direction: column; gap: 0; }
+
+    .exp-card {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+    .exp-card:last-child { border-bottom: 1px solid var(--border); }
+
+    .exp-meta { display: flex; flex-direction: column; gap: 6px; padding-top: 4px; }
+    .exp-period { font-size: 0.8rem; color: var(--muted); font-weight: 400; }
+    .exp-location { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.02em; }
+    .exp-type {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: var(--tag-bg);
+      color: var(--muted);
+      padding: 3px 10px;
+      border-radius: 100px;
+      width: fit-content;
+      margin-top: 4px;
+    }
+
+    .exp-content { display: flex; flex-direction: column; gap: 12px; }
+    .exp-company {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .exp-role { font-size: 0.85rem; color: var(--accent-dark); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .exp-bullets li {
+      font-size: 0.875rem;
+      color: var(--muted);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--border); }
+
+    /* ── CERTIFICATIONS ── */
+    #certifications { background: var(--surface); }
+
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .cert-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cert-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+
+    .cert-logo {
+      width: 48px; height: 48px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .cert-issuer { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; }
+    .cert-name { font-size: 0.95rem; font-weight: 500; color: var(--text); line-height: 1.4; letter-spacing: -0.01em; }
+
+    /* ── EDUCATION ── */
+    #education { background: var(--bg); }
+
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .edu-degree {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .edu-school { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+    .edu-cgpa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .edu-cgpa strong { color: var(--text); font-size: 1.1rem; font-family: var(--font-display); }
+
+    .edu-activities { display: flex; flex-direction: column; gap: 16px; }
+    .edu-act-title { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .edu-act-item {
+      padding: 16px;
+      background: var(--bg);
+      border-radius: 12px;
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--text); color: var(--bg); }
+    #contact .section-label { color: rgba(247,245,242,0.4); }
+    #contact .section-label::before { background: rgba(247,245,242,0.15); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .contact-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--bg);
+    }
+    .contact-headline em { font-style: italic; color: var(--accent); }
+
+    .contact-sub { font-size: 1rem; color: rgba(247,245,242,0.5); margin-top: 20px; font-weight: 300; line-height: 1.7; }
+
+    .contact-links { display: flex; flex-direction: column; gap: 24px; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(247,245,242,0.1);
+      text-decoration: none;
+      color: var(--bg);
+      transition: padding-left 0.2s;
+    }
+    .contact-link:hover { padding-left: 8px; }
+    .contact-link-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(247,245,242,0.4); margin-bottom: 4px; }
+    .contact-link-value { font-size: 1rem; font-weight: 400; }
+    .contact-link-arrow { font-size: 1.2rem; color: rgba(247,245,242,0.3); transition: color 0.2s; }
+    .contact-link:hover .contact-link-arrow { color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      border-top: 1px solid rgba(247,245,242,0.08);
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy { font-size: 0.8rem; color: rgba(247,245,242,0.3); }
+    .footer-badge {
+      font-size: 0.75rem;
+      color: rgba(247,245,242,0.3);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .footer-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+
+    /* ── ARCHITECTURE SECTION ── */
+    #architecture { background: var(--bg); }
+
+    .arch-diagram {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .arch-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .arch-step {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--bg);
+      border-radius: 12px;
+      font-size: 0.875rem;
+      color: var(--text);
+      position: relative;
+    }
+    .arch-step::after {
+      content: '↓';
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.7rem;
+      color: var(--border);
+    }
+    .arch-step:last-child::after { display: none; }
+    .arch-step-icon {
+      width: 32px; height: 32px;
+      background: var(--tag-bg);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .arch-checklist { display: flex; flex-direction: column; gap: 12px; }
+    .arch-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .check-icon {
+      width: 20px; height: 20px;
+      background: var(--tag-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: var(--accent-dark);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 72px 24px; }
+      .hero { padding: 100px 24px 60px; }
+      .about-grid, .contact-grid, .edu-card { grid-template-columns: 1fr; gap: 40px; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .certs-grid { grid-template-columns: 1fr 1fr; }
+      .project-card { grid-template-columns: 1fr; gap: 24px; }
+      .exp-card { grid-template-columns: 1fr; gap: 12px; }
+      .arch-diagram { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      .hero-meta { flex-wrap: wrap; gap: 24px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .certs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">Kavin Naik</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#certifications">Certs</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="assets/KavinNaik_Resume.pdf" class="nav-cta" target="_blank">Resume ↓</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero">
+      <span class="hero-eyebrow">Cloud Resume Challenge · Mumbai, India</span>
+      <h1 class="hero-title">
+        Building <em>reliable</em><br>cloud infrastructure
+      </h1>
+      <p class="hero-sub">
+        Aspiring Cloud &amp; DevOps engineer specialising in AWS, Terraform, Kubernetes, and CI/CD pipelines that ship with confidence.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="#contact" class="btn-secondary">Get in touch</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-stat">
+          <span class="hero-stat-num">4+</span>
+          <span class="hero-stat-label">Certifications</span>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">3+</span>
+          <span class="hero-stat-label">Cloud Projects</span>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <span class="visitor-count" id="visitor-count">—</span>
+          <span class="hero-stat-label">Site Visitors</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="container">
+      <span class="section-label reveal">About</span>
+      <div class="about-grid">
+        <div class="reveal">
+          <h2 class="about-headline">Cloud and DevOps, <em>done right</em></h2>
+          <p class="about-body">
+            I'm a recent CS &amp; Design graduate who enjoys what goes on behind the scenes of modern applications. From provisioning scalable infrastructure on AWS to automating deployments with Docker, Kubernetes, and CI/CD — I like building systems that are reliable, reproducible, and production-ready.
+          </p>
+          <p class="about-body" style="margin-top:16px;">
+            I earned my BE in Computer Science &amp; Design from New Horizon Institute of Technology and Management, Thane (2021–2025, CGPA 6.95), where I led student technical councils and organised workshops for 200+ students.
+          </p>
+        </div>
+        <div class="about-right reveal">
+          <div class="about-focus-item">
+            <div class="about-focus-title">☁️ Cloud Infrastructure</div>
+            <div class="about-focus-text">AWS EC2, S3, IAM, Lambda, CloudFront, Route 53 — building secure, scalable workloads from scratch.</div>
+          </div>
+          <div class="about-focus-item">
+            <div class="about-focus-title">⚙️ DevOps & Automation</div>
+            <div class="about-focus-text">GitHub Actions CI/CD pipelines, Terraform IaC, automated testing and deployment workflows.</div>
+          </div>
+          <div class="about-focus-item">
+            <div class="about-focus-title">🐳 Containers & Kubernetes</div>
+            <div class="about-focus-text">Docker, Kubernetes with Kind, NGINX Ingress — packaging and orchestrating services at scale.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <section id="skills">
+    <div class="container">
+      <span class="section-label reveal">Skills</span>
+      <div class="skills-grid reveal">
+        <div class="skill-card">
+          <div class="skill-icon">☁️</div>
+          <div class="skill-name">AWS & Cloud</div>
+          <p style="font-size:0.875rem;color:var(--muted);line-height:1.6;">Designing and deploying secure, scalable workloads using AWS best practices.</p>
+          <div class="skill-tags">
+            <span class="tag">EC2</span><span class="tag">S3</span><span class="tag">IAM</span>
+            <span class="tag">Lambda</span><span class="tag">CloudFront</span><span class="tag">Route 53</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🔄</div>
+          <div class="skill-name">DevOps & CI/CD</div>
+          <p style="font-size:0.875rem;color:var(--muted);line-height:1.6;">Building repeatable pipelines from commit to production with quality gates.</p>
+          <div class="skill-tags">
+            <span class="tag">GitHub Actions</span><span class="tag">Blue/Green</span><span class="tag">Automated Tests</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🐳</div>
+          <div class="skill-name">Containers & K8s</div>
+          <p style="font-size:0.875rem;color:var(--muted);line-height:1.6;">Packaging and orchestrating services with Docker and Kubernetes for resilience.</p>
+          <div class="skill-tags">
+            <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Kind</span><span class="tag">NGINX Ingress</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🏗️</div>
+          <div class="skill-name">Infrastructure as Code</div>
+          <p style="font-size:0.875rem;color:var(--muted);line-height:1.6;">Managing infrastructure lifecycle declaratively with reusable Terraform modules.</p>
+          <div class="skill-tags">
+            <span class="tag">Terraform</span><span class="tag">Remote State</span><span class="tag">Immutable Infra</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🐍</div>
+          <div class="skill-name">Programming & Data</div>
+          <p style="font-size:0.875rem;color:var(--muted);line-height:1.6;">Writing reliable backend and scripting logic with focus on clarity and performance.</p>
+          <div class="skill-tags">
+            <span class="tag">Python</span><span class="tag">Bash</span><span class="tag">MongoDB</span><span class="tag">DynamoDB</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🌐</div>
+          <div class="skill-name">Web Engineering</div>
+          <p style="font-size:0.875rem;color:var(--muted);line-height:1.6;">Building responsive, accessible interfaces that feel fast on any device.</p>
+          <div class="skill-tags">
+            <span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">React</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section id="projects">
+    <div class="container">
+      <div class="projects-header reveal">
+        <h2 class="projects-headline">Selected <em>work</em></h2>
+      </div>
+
+      <div class="project-card reveal">
+        <div>
+          <div class="project-num">01</div>
+          <h3 class="project-title">Cloud Resume Challenge</h3>
+          <p class="project-desc">This portfolio — a static site on S3 served via CloudFront with a serverless visitor counter built on API Gateway, Lambda, and DynamoDB. Full IaC via Terraform, deployed with GitHub Actions.</p>
+        </div>
+        <div class="project-right">
+          <div class="project-tech">
+            <span class="tag">AWS S3</span><span class="tag">CloudFront</span><span class="tag">Lambda</span>
+            <span class="tag">DynamoDB</span><span class="tag">Terraform</span><span class="tag">GitHub Actions</span>
+          </div>
+          <ul class="project-highlights">
+            <li>Serverless visitor counter with atomic DynamoDB increments</li>
+            <li>Full stack provisioned via Terraform IaC</li>
+            <li>CI/CD pipeline auto-deploys on every push to main</li>
           </ul>
-        </nav>
+          <a href="https://github.com/kavinnaik/The-Cloud-Resume-Challenge" target="_blank" class="project-link">GitHub Repo</a>
+        </div>
       </div>
-    </header>
 
-    <main>
-      <!-- Hero -->
-      <section id="hero" class="hero section">
-        <div class="container hero-grid">
-          <div class="hero-text reveal">
-            <p class="eyebrow">Cloud Resume Challenge</p>
-            <h1>
-              Cloud, DevOps &<br />
-              Software Engineering
-            </h1>
-            <p class="subtitle">
-              I’m Kavin Naik, an aspiring Cloud and DevOps engineer focused on building
-              reliable, scalable infrastructure with AWS, Terraform, Docker,
-              Kubernetes, and CI/CD.
-            </p>
-            <div class="hero-cta">
-              <a href="#projects" class="btn btn-primary">View Projects</a>
-              <a href="#contact" class="btn btn-ghost">Contact Me</a>
-              <a
-                href="assets/KavinNaik_Resume.pdf"
-                class="btn btn-ghost"
-                target="_blank"
-                rel="noreferrer"
-                download
-              >
-                Download Resume
-              </a>
-            </div>
-            <div class="hero-meta">
-              <span>📍 Mumbai, India</span>
-              <span class="divider">•</span>
-              <span>AWS Cloud | DevOps | CS & Design (BE)</span>
-            </div>
-            <div class="hero-counter" aria-live="polite">
-              <span class="counter-label">Visitors</span>
-              <span id="visitor-count" class="counter-value">--</span>
-            </div>
+      <div class="project-card reveal">
+        <div>
+          <div class="project-num">02</div>
+          <h3 class="project-title">CI/CD Pipeline for Python App</h3>
+          <p class="project-desc">Provisioned AWS infrastructure for a Python application and implemented a three-stage GitHub Actions pipeline to build, test, and deploy automatically to EC2.</p>
+        </div>
+        <div class="project-right">
+          <div class="project-tech">
+            <span class="tag">AWS EC2</span><span class="tag">Terraform</span><span class="tag">Docker</span><span class="tag">GitHub Actions</span>
           </div>
-          <div class="hero-card reveal">
-            <div class="hero-card-inner">
-              <h2>Cloud-native solutions, from idea to deployment.</h2>
-              <p>
-                I design and ship end-to-end cloud architectures using AWS, IaC,
-                and automated pipelines—backed by real project experience in
-                CI/CD, Kubernetes, and serverless.
-              </p>
-              <ul class="hero-highlights">
-                <li>Certified AWS Cloud Practitioner</li>
-                <li>Oracle Cloud Infrastructure Certified</li>
-                <li>Hands-on CI/CD with GitHub Actions</li>
-                <li>Production-style Kubernetes deployments</li>
-              </ul>
-            </div>
-          </div>
+          <ul class="project-highlights">
+            <li>Automated build / test / push pipeline</li>
+            <li>Terraform provisioning on every deploy</li>
+            <li>Standardised deployment workflow across environments</li>
+          </ul>
+          <a href="https://github.com/kavinnaik/CI-CD-Pipeline-for-Python-Apps" target="_blank" class="project-link">GitHub Repo</a>
         </div>
-      </section>
-
-      <!-- About -->
-      <section id="about" class="section">
-        <div class="container section-header reveal">
-          <p class="eyebrow">About</p>
-          <h2>About Me</h2>
-          <p class="section-subtitle">
-            I’m a Cloud and DevOps enthusiast who enjoys what goes on 
-            behind the scenes of modern applications. From building scalable cloud 
-            infrastructure on AWS to automating deployments with Docker, Kubernetes 
-            and CI/CD, I like creating reliable systems that power real-world applications. 🚀
-          </p>
-        </div>
-        <div class="container about-grid">
-          <div class="about-card reveal">
-            <h3>Profile</h3>
-            <p>
-              I’m a recent Computer Science Engineering graduate with a strong interest in 
-              Cloud Computing and DevOps, passionate about building scalable and reliable systems. 
-              During my internships, I gained hands on experience working with AWS services, 
-              containerization, and CI/CD pipelines while developing and deploying real world applications.
-            </p>
-            <p>
-              I enjoy understanding what happens behind the scenes of modern software, from infrastructure 
-              provisioning to automated deployments. I’m always exploring new tools and technologies to improve 
-              efficiency, automate workflows, and build systems that are secure, scalable, and production-ready.
-            </p>
-          </div>
-          <div class="about-card reveal">
-            <h3>Cloud & DevOps Focus</h3>
-            <ul class="pill-list">
-              <li>AWS (EC2, S3, IAM, Lambda)</li>
-              <li>Oracle Cloud Infrastructure</li>
-              <li>Terraform & Infrastructure as Code</li>
-              <li>Docker & Containerization</li>
-              <li>Kubernetes (Kind, Ingress, services)</li>
-              <li>GitHub Actions CI/CD</li>
-            </ul>
-          </div>
-          <div class="about-card reveal">
-            <h3>Education Snapshot</h3>
-            <p>
-              BE Computer Science &amp; Design, New Horizon Institute of Technology and
-              Management, Thane (2021–2025) – CGPA 6.95.
-            </p>
-            <p class="about-meta">
-              Active in student leadership as Joint Technical Secretary (CS Dept. Student
-              Council) and Secretary (CSI Council), organizing workshops and events for
-              200+ students.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Skills -->
-      <section id="skills" class="section section-alt">
-        <div class="container section-header reveal">
-          <p class="eyebrow">Skills</p>
-          <h2>Cloud & Engineering Skills</h2>
-        </div>
-        <div class="container skills-grid">
-          <article class="skill-card reveal">
-            <h3>AWS & Cloud</h3>
-            <p>
-              Designing and deploying secure, scalable workloads on AWS using
-              best practices for networking, identity, and storage.
-            </p>
-            <ul class="list">
-              <li>EC2, S3, IAM, Lambda</li>
-              <li>CloudFront, Route 53</li>
-              <li>Serverless architectures</li>
-            </ul>
-          </article>
-          <article class="skill-card reveal">
-            <h3>DevOps & CI/CD</h3>
-            <p>
-              Building repeatable pipelines that take code from commit to
-              production with quality gates and infrastructure automation.
-            </p>
-            <ul class="list">
-              <li>GitHub Actions CI/CD</li>
-              <li>Automated testing & deployment</li>
-              <li>Blue/green style rollouts</li>
-            </ul>
-          </article>
-          <article class="skill-card reveal">
-            <h3>Containers & Kubernetes</h3>
-            <p>
-              Packaging and orchestrating services with Docker and Kubernetes to
-              achieve portability and resilience.
-            </p>
-            <ul class="list">
-              <li>Docker images & Compose</li>
-              <li>Kubernetes with Kind</li>
-              <li>NGINX Ingress Controller</li>
-            </ul>
-          </article>
-          <article class="skill-card reveal">
-            <h3>Infrastructure as Code</h3>
-            <p>
-              Managing infrastructure lifecycle declaratively using Terraform
-              with reusable modules and remote state.
-            </p>
-            <ul class="list">
-              <li>Terraform on AWS</li>
-              <li>Security groups & networking</li>
-              <li>Immutable infra patterns</li>
-            </ul>
-          </article>
-          <article class="skill-card reveal">
-            <h3>Programming & Data</h3>
-            <p>
-              Writing reliable backend and scripting logic with a focus on
-              clarity, observability, and performance.
-            </p>
-            <ul class="list">
-              <li>Python, Bash</li>
-              <li>MongoDB, DynamoDB</li>
-              <li>REST APIs & serverless functions</li>
-            </ul>
-          </article>
-          <article class="skill-card reveal">
-            <h3>Web Engineering</h3>
-            <p>
-              Building responsive, accessible interfaces that feel fast and
-              modern on any device.
-            </p>
-            <ul class="list">
-              <li>HTML, CSS, JavaScript</li>
-              <li>React, component-driven UI</li>
-              <li>Performance and accessibility</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <!-- Projects -->
-      <section id="projects" class="section">
-        <div class="container section-header reveal">
-          <p class="eyebrow">Projects</p>
-          <h2>Selected Cloud & DevOps Projects</h2>
-          <p class="section-subtitle">
-            Real-world style projects demonstrating cloud infrastructure,
-            automation, and application deployment.
-          </p>
-        </div>
-        <div class="container projects-grid">
-          <article class="project-card reveal">
-            <div class="project-header">
-              <h3>CI/CD Pipeline for Python App</h3>
-              <span class="project-tag">CI/CD · Terraform · AWS</span>
-            </div>
-            <p>
-              Provisioned AWS infrastructure for a Python application and
-              implemented a three-stage GitHub Actions pipeline to build, test,
-              and deploy automatically.
-            </p>
-            <ul class="project-meta">
-              <li><strong>Tech stack</strong>: AWS EC2, Terraform, Docker, GitHub Actions</li>
-              <li>
-                <strong>Highlights</strong>: Automated build/test/push,
-                Terraform apply, and deployment to EC2 with standardized
-                workflows.
-              </li>
-            </ul>
-            <div class="project-links">
-              <a href="https://github.com/kavinnaik/CI-CD-Pipeline-for-Python-Apps" target="_blank" rel="noreferrer"
-                >GitHub Repo</a
-              >
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-header">
-              <h3>Three-Tier App on Kubernetes with CI</h3>
-              <span class="project-tag">Kubernetes · GitHub Actions</span>
-            </div>
-            <p>
-              Deployed a three-tier web application (NGINX frontend, Python
-              Flask backend, PostgreSQL database) on a local Kubernetes cluster
-              using Kind.
-            </p>
-            <ul class="project-meta">
-              <li>
-                <strong>Tech stack</strong>: Docker, Kubernetes (Kind), NGINX
-                Ingress, GitHub Actions, PostgreSQL
-              </li>
-              <li>
-                <strong>Highlights</strong>: Automated deployment workflows, Ingress
-                configuration, and service-to-service communication.
-              </li>
-            </ul>
-            <div class="project-links">
-              <a href="https://github.com/kavinnaik/three-tier-k8s" target="_blank" rel="noreferrer"
-                >GitHub Repo</a
-              >
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-header">
-              <h3>Network Intrusion Detection System</h3>
-              <span class="project-tag">Python · ML · Docker</span>
-            </div>
-            <p>
-              Built an ML pipeline to detect network intrusions using KNN and
-              Random Forest models, with containerized services and a JS
-              dashboard for insights.
-            </p>
-            <ul class="project-meta">
-              <li>
-                <strong>Tech stack</strong>: Python, scikit-learn, MongoDB,
-                Docker, JavaScript
-              </li>
-              <li>
-                <strong>Highlights</strong>: Log ingestion into MongoDB,
-                containerized deployment, and interactive visualization.
-              </li>
-            </ul>
-            <div class="project-links">
-              <a href="https://github.com/kavinnaik/Network-Intrusion-Detection-System" target="_blank" rel="noreferrer"
-                >GitHub Repo</a
-              >
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- Cloud Resume Challenge -->
-      <section id="cloud-resume" class="section section-alt">
-        <div class="container section-header reveal">
-          <p class="eyebrow">Cloud Resume Challenge</p>
-          <h2>Architecture of This Portfolio</h2>
-          <p class="section-subtitle">
-            This website is designed to satisfy the Cloud Resume Challenge using
-            AWS, serverless, and Infrastructure as Code.
-          </p>
-        </div>
-        <div class="container cloud-grid">
-          <div class="cloud-card reveal">
-            <h3>End-to-End AWS Architecture</h3>
-            <p>
-              The portfolio is deployed as a static website on Amazon S3, served
-              securely via CloudFront, and mapped to a custom domain in
-              Route&nbsp;53. A serverless visitor counter uses API Gateway,
-              Lambda, and DynamoDB.
-            </p>
-            <ul class="list">
-              <li>S3 static website hosting</li>
-              <li>CloudFront CDN with HTTPS</li>
-              <li>Route 53 DNS and domain</li>
-              <li>Lambda + DynamoDB visitor counter</li>
-              <li>Terraform-managed Infrastructure as Code</li>
-              <li>GitHub Actions CI/CD pipeline</li>
-            </ul>
-          </div>
-          <div class="cloud-card cloud-diagram reveal" aria-label="High-level architecture diagram">
-            <h3>High-Level Architecture</h3>
-            <div class="diagram">
-              <div class="diagram-row">
-                <div class="diagram-node">User Browser</div>
-                <div class="diagram-arrow">➡</div>
-                <div class="diagram-node">CloudFront CDN</div>
-                <div class="diagram-arrow">➡</div>
-                <div class="diagram-node">S3 Static Site</div>
-              </div>
-              <div class="diagram-row diagram-row-secondary">
-                <div class="diagram-node">User Browser</div>
-                <div class="diagram-arrow">➡</div>
-                <div class="diagram-node">API Gateway</div>
-                <div class="diagram-arrow">➡</div>
-                <div class="diagram-node">Lambda</div>
-                <div class="diagram-arrow">➡</div>
-                <div class="diagram-node">DynamoDB</div>
-              </div>
-              <p class="diagram-caption">
-                All resources are provisioned and version-controlled using
-                Terraform and deployed via GitHub Actions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Certifications -->
-      <section id="certifications" class="section">
-        <div class="container section-header reveal">
-          <p class="eyebrow">Certifications</p>
-          <h2>Cloud Certifications</h2>
-          <p class="section-subtitle">
-            Credentials that validate my skills across AWS and Oracle Cloud Infrastructure.
-          </p>
-        </div>
-        <div class="container certs-grid">
-          <div class="certs-column reveal">
-            <h3 class="certs-heading">Amazon Web Services</h3>
-            <div class="certs-panel">
-              <article class="cert-badge">
-                <div class="cert-badge-main">
-                  <div class="cert-icon cert-icon--large">
-                    <img
-                      src="assets/images/awslogo.png"
-                      alt="AWS certification badge"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div>
-                    <h4>AWS Certified Cloud Practitioner</h4>
-                    <p class="cert-issuer">Amazon Web Services</p>
-                  </div>
-                </div>
-                <p class="cert-meta">Foundational understanding of AWS Cloud concepts, security, pricing, and architecture.</p>
-              </article>
-            </div>
-          </div>
-          <div class="certs-column reveal">
-            <h3 class="certs-heading">Oracle Cloud Infrastructure</h3>
-            <div class="certs-panel">
-              <article class="cert-badge">
-                <div class="cert-badge-main">
-                  <div class="cert-icon">
-                    <img
-                      src="assets/images/ocifound.jpg"
-                      alt="OCI Foundations certification badge"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div>
-                    <h4>OCI 2025 Certified Foundations Associate</h4>
-                    <p class="cert-issuer">Oracle Cloud Infrastructure</p>
-                  </div>
-                </div>
-                <p class="cert-meta">Core cloud concepts, services, and security on Oracle Cloud.</p>
-              </article>
-              <article class="cert-badge">
-                <div class="cert-badge-main">
-                  <div class="cert-icon">
-                    <img
-                      src="assets/images/ocifound.jpg"
-                      alt="OCI AI Foundations certification badge"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div>
-                    <h4>OCI 2025 Certified AI Foundations Associate</h4>
-                    <p class="cert-issuer">Oracle Cloud Infrastructure</p>
-                  </div>
-                </div>
-                <p class="cert-meta">Applied AI and ML capabilities on OCI with practical use cases.</p>
-              </article>
-              <article class="cert-badge">
-                <div class="cert-badge-main">
-                  <div class="cert-icon">
-                    <img
-                      src="assets/images/ociprof.png"
-                      alt="OCI Developer Professional certification badge"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div>
-                    <h4>OCI 2025 Developer Professional</h4>
-                    <p class="cert-issuer">Oracle Cloud Infrastructure</p>
-                  </div>
-                </div>
-                <p class="cert-meta">Designing and building cloud-native applications on Oracle Cloud.</p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Experience & Education -->
-      <section id="experience" class="section">
-        <div class="container section-header reveal">
-          <p class="eyebrow">Experience</p>
-          <h2>Professional Experience</h2>
-        </div>
-        <div class="container experience-grid">
-          <article class="experience-card reveal">
-            <header class="experience-header">
-              <div class="experience-header-main">
-                <div class="experience-logo">
-                  <img
-                    src="assets/images/f13tech_logo.jpg"
-                    alt="F13 Technologies logo"
-                    loading="lazy"
-                  />
-                </div>
-                <div>
-                  <h3 class="experience-company">F13 Technologies</h3>
-                  <p class="experience-role">AWS Cloud Intern</p>
-                </div>
-              </div>
-              <div class="experience-badges">
-                <span class="badge badge-muted">Remote</span>
-                <span class="badge badge-muted">Dec 2024 – Mar 2025</span>
-                <span class="badge badge-soft">Internship</span>
-              </div>
-            </header>
-            <ul class="experience-points">
-              <li>
-                Led a team of 5+ interns to build and deploy cloud-based
-                solutions, improving efficiency by 25% through standardized
-                deployment practices.
-              </li>
-              <li>
-                Built an HR Management System on AWS with employee records,
-                payroll, and leave management using S3 for storage and IAM for
-                access control.
-              </li>
-              <li>
-                Developed an IT Service Recommendation System where users input
-                requirements and receive tailored AWS service suggestions using
-                Lambda and DynamoDB.
-              </li>
-            </ul>
-          </article>
-
-          <article class="experience-card reveal">
-            <header class="experience-header">
-              <div class="experience-header-main">
-                <div class="experience-logo">
-                  <img
-                    src="assets/images/shripriti_logo.jpg"
-                    alt="Shripriti Educational and IT Hub logo"
-                    loading="lazy"
-                  />
-                </div>
-                <div>
-                  <h3 class="experience-company">Shripriti Educational &amp; IT Hub</h3>
-                  <p class="experience-role">Web Development Intern</p>
-                </div>
-              </div>
-              <div class="experience-badges">
-                <span class="badge badge-muted">Remote</span>
-                <span class="badge badge-muted">Feb 2024 – Mar 2024</span>
-                <span class="badge badge-soft">Internship</span>
-              </div>
-            </header>
-            <ul class="experience-points">
-              <li>
-                Built and deployed three responsive web applications using HTML,
-                CSS, JavaScript, and React.
-              </li>
-              <li>
-                Debugged an existing codebase, reducing load time by 30% and
-                improving user experience.
-              </li>
-              <li>
-                Developed reusable UI components and implemented responsive
-                layouts using CSS frameworks.
-              </li>
-            </ul>
-          </article>
-
-        </div>
-      </section>
-
-      <!-- Education -->
-      <section id="education" class="section section-alt">
-        <div class="container section-header reveal">
-          <p class="eyebrow">Education</p>
-          <h2>Academic Background</h2>
-        </div>
-        <div class="container education-wrap">
-          <article class="about-card reveal">
-            <h3>BE Computer Science &amp; Design</h3>
-            <p class="education-meta">
-              New Horizon Institute of Technology and Management, Thane · 2021 – 2025 · CGPA 6.95
-            </p>
-            <p>
-              A program that blends core computer science with design, focusing on building usable,
-              human-centered software systems while maintaining strong engineering foundations.
-            </p>
-            <h4>Leadership & Activities</h4>
-            <ul class="list">
-              <li>
-                Joint Technical Secretary (CS Dept. Student Council) and Secretary (CSI Council).
-              </li>
-              <li>
-                Led a 20-member team for Techfest and organized technical workshops and events for 200+ students.
-              </li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section id="contact" class="section section-alt">
-        <div class="container section-header reveal">
-          <p class="eyebrow">Contact</p>
-          <h2>Let’s Build Something</h2>
-          <p class="section-subtitle">
-            Open to roles and opportunities in Cloud, DevOps, and software
-            engineering.
-          </p>
-        </div>
-        <div class="container contact-grid">
-          <div class="contact-card reveal">
-            <h3>Reach Out</h3>
-            <ul class="contact-list">
-              <li>
-                <span>Email</span>
-                <a href="mailto:kavinnaik19@gmail.com">kavinnaik19@gmail.com</a>
-              </li>
-              <li>
-                <span>LinkedIn</span>
-                <a
-                  href="https://www.linkedin.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  >linkedin.com/in/kavin-naik</a
-                >
-              </li>
-              <li>
-                <span>GitHub</span>
-                <a
-                  href="https://github.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  >github.com/kavinnaik</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="contact-card reveal">
-            <h3>Quick Contact Form</h3>
-            <form
-              class="contact-form"
-              aria-label="Contact form"
-              onsubmit="return false;"
-            >
-              <div class="field">
-                <label for="name">Name</label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  autocomplete="name"
-                  required
-                />
-              </div>
-              <div class="field">
-                <label for="email">Email</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autocomplete="email"
-                  required
-                />
-              </div>
-              <div class="field">
-                <label for="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">
-                Submit (demo only)
-              </button>
-              <p class="form-note">
-                This form is intentionally non-functional for the challenge, but
-                can be wired to an email or API later.
-              </p>
-            </form>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p>
-          © <span id="year"></span> Kavin Naik. Built for the
-          <span class="highlight">Cloud Resume Challenge</span>.
-        </p>
-        <a href="#hero" class="back-to-top">Back to top</a>
       </div>
-    </footer>
 
-    <!-- Set by Terraform output (visitor_api_url). Replace the string below
-         with your actual API Gateway invoke URL. -->
-    <script>
-      window.VISITOR_COUNT_API_URL = "https://qfnze65tw6.execute-api.ap-south-1.amazonaws.com/visitors";
-    </script>
-    <script src="assets/js/main.js"></script>
-  </body>
+      <div class="project-card reveal">
+        <div>
+          <div class="project-num">03</div>
+          <h3 class="project-title">Three-Tier App on Kubernetes</h3>
+          <p class="project-desc">Deployed a three-tier web application (NGINX frontend, Python Flask backend, PostgreSQL database) on a local Kubernetes cluster using Kind with full CI automation.</p>
+        </div>
+        <div class="project-right">
+          <div class="project-tech">
+            <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Kind</span>
+            <span class="tag">NGINX Ingress</span><span class="tag">GitHub Actions</span><span class="tag">PostgreSQL</span>
+          </div>
+          <ul class="project-highlights">
+            <li>Automated deployment workflows via GitHub Actions</li>
+            <li>NGINX Ingress configuration for routing</li>
+            <li>Service-to-service communication across tiers</li>
+          </ul>
+          <a href="https://github.com/kavinnaik/three-tier-k8s" target="_blank" class="project-link">GitHub Repo</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div>
+          <div class="project-num">04</div>
+          <h3 class="project-title">Network Intrusion Detection System</h3>
+          <p class="project-desc">Built an ML pipeline to detect network intrusions using KNN and Random Forest models, with containerised services and a JavaScript dashboard for real-time insights.</p>
+        </div>
+        <div class="project-right">
+          <div class="project-tech">
+            <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">MongoDB</span>
+            <span class="tag">Docker</span><span class="tag">JavaScript</span>
+          </div>
+          <ul class="project-highlights">
+            <li>KNN and Random Forest models for intrusion detection</li>
+            <li>Log ingestion pipeline into MongoDB</li>
+            <li>Containerised deployment with interactive visualisation</li>
+          </ul>
+          <a href="https://github.com/kavinnaik/Network-Intrusion-Detection-System" target="_blank" class="project-link">GitHub Repo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ── -->
+  <section id="experience">
+    <div class="container">
+      <span class="section-label reveal">Experience</span>
+      <div class="exp-grid">
+        <div class="exp-card reveal">
+          <div class="exp-meta">
+            <span class="exp-period">Dec 2024 – Mar 2025</span>
+            <span class="exp-location">Remote</span>
+            <span class="exp-type">Internship</span>
+          </div>
+          <div class="exp-content">
+            <div class="exp-company">F13 Technologies</div>
+            <div class="exp-role">AWS Cloud Intern</div>
+            <ul class="exp-bullets">
+              <li>Led a team of 5+ interns to build and deploy cloud-based solutions, improving efficiency by 25% through standardised deployment practices.</li>
+              <li>Built an HR Management System on AWS with S3 for storage and IAM for access control.</li>
+              <li>Developed an IT Service Recommendation System using Lambda and DynamoDB.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp-card reveal">
+          <div class="exp-meta">
+            <span class="exp-period">Feb 2024 – Mar 2024</span>
+            <span class="exp-location">Remote</span>
+            <span class="exp-type">Internship</span>
+          </div>
+          <div class="exp-content">
+            <div class="exp-company">Shripriti Educational & IT Hub</div>
+            <div class="exp-role">Web Development Intern</div>
+            <ul class="exp-bullets">
+              <li>Built and deployed three responsive web applications using HTML, CSS, JavaScript, and React.</li>
+              <li>Debugged an existing codebase, reducing load time by 30% and improving user experience.</li>
+              <li>Developed reusable UI components and responsive layouts using CSS frameworks.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CERTIFICATIONS ── -->
+  <section id="certifications">
+    <div class="container">
+      <span class="section-label reveal">Certifications</span>
+      <div class="certs-grid reveal">
+        <div class="cert-card">
+          <img src="assets/images/awslogo.png" alt="AWS" class="cert-logo" />
+          <div>
+            <div class="cert-issuer">Amazon Web Services</div>
+            <div class="cert-name">AWS Certified Cloud Practitioner</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <img src="assets/images/ocifound.jpg" alt="OCI" class="cert-logo" />
+          <div>
+            <div class="cert-issuer">Oracle Cloud Infrastructure</div>
+            <div class="cert-name">OCI 2025 Certified Foundations Associate</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <img src="assets/images/ocifound.jpg" alt="OCI" class="cert-logo" />
+          <div>
+            <div class="cert-issuer">Oracle Cloud Infrastructure</div>
+            <div class="cert-name">OCI 2025 Certified AI Foundations Associate</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <img src="assets/images/ociprof.png" alt="OCI" class="cert-logo" />
+          <div>
+            <div class="cert-issuer">Oracle Cloud Infrastructure</div>
+            <div class="cert-name">OCI 2025 Developer Professional</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ARCHITECTURE ── -->
+  <section id="architecture">
+    <div class="container">
+      <span class="section-label reveal">Architecture</span>
+      <div class="arch-diagram reveal">
+        <div>
+          <h3 style="font-family:var(--font-display);font-size:1.5rem;letter-spacing:-0.02em;margin-bottom:8px;">How this site is built</h3>
+          <p style="font-size:0.875rem;color:var(--muted);margin-bottom:32px;line-height:1.7;">Every resource is provisioned via Terraform and deployed automatically through GitHub Actions.</p>
+          <div class="arch-flow">
+            <div class="arch-step"><div class="arch-step-icon">🌐</div> User Browser</div>
+            <div class="arch-step"><div class="arch-step-icon">⚡</div> CloudFront CDN (HTTPS)</div>
+            <div class="arch-step"><div class="arch-step-icon">🪣</div> S3 Static Site (ap-south-1)</div>
+          </div>
+          <div style="margin-top:24px;">
+            <div class="arch-step" style="margin-bottom:12px;"><div class="arch-step-icon">🔌</div> API Gateway → Lambda → DynamoDB</div>
+          </div>
+        </div>
+        <div>
+          <div class="arch-act-title" style="font-size:0.8rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;">Challenge Checklist</div>
+          <div class="arch-checklist">
+            <div class="arch-check"><div class="check-icon">✓</div><span>HTML/CSS/JS frontend deployed to S3</span></div>
+            <div class="arch-check"><div class="check-icon">✓</div><span>CloudFront CDN with HTTPS</span></div>
+            <div class="arch-check"><div class="check-icon">✓</div><span>Custom domain with Route 53</span></div>
+            <div class="arch-check"><div class="check-icon">✓</div><span>Visitor counter — API Gateway + Lambda + DynamoDB</span></div>
+            <div class="arch-check"><div class="check-icon">✓</div><span>Full Infrastructure as Code with Terraform</span></div>
+            <div class="arch-check"><div class="check-icon">✓</div><span>CI/CD pipeline via GitHub Actions</span></div>
+            <div class="arch-check"><div class="check-icon">✓</div><span>Version control with Git & GitHub</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EDUCATION ── -->
+  <section id="education">
+    <div class="container">
+      <span class="section-label reveal">Education</span>
+      <div class="edu-card reveal">
+        <div>
+          <div class="edu-degree">BE Computer Science & Design</div>
+          <div class="edu-school">New Horizon Institute of Technology and Management, Thane · 2021 – 2025</div>
+          <div class="edu-cgpa"><strong>6.95</strong> CGPA · A program blending core CS with human-centred design</div>
+        </div>
+        <div class="edu-activities">
+          <div class="edu-act-title">Leadership & Activities</div>
+          <div class="edu-act-item">🎖 Joint Technical Secretary — CS Dept. Student Council</div>
+          <div class="edu-act-item">📋 Secretary — CSI Council</div>
+          <div class="edu-act-item">🚀 Led a 20-member team for Techfest; organised technical workshops and events for 200+ students</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <div class="container">
+      <span class="section-label reveal">Contact</span>
+      <div class="contact-grid">
+        <div class="reveal">
+          <h2 class="contact-headline">Let's <em>build</em> something.</h2>
+          <p class="contact-sub">Open to roles and opportunities in Cloud, DevOps, and software engineering. Always happy to chat.</p>
+        </div>
+        <div class="contact-links reveal">
+          <a href="mailto:kavinnaik19@gmail.com" class="contact-link">
+            <div>
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-value">kavinnaik19@gmail.com</div>
+            </div>
+            <span class="contact-link-arrow">→</span>
+          </a>
+          <a href="https://linkedin.com/in/kavin-naik" target="_blank" class="contact-link">
+            <div>
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-value">linkedin.com/in/kavin-naik</div>
+            </div>
+            <span class="contact-link-arrow">→</span>
+          </a>
+          <a href="https://github.com/kavinnaik" target="_blank" class="contact-link">
+            <div>
+              <div class="contact-link-label">GitHub</div>
+              <div class="contact-link-value">github.com/kavinnaik</div>
+            </div>
+            <span class="contact-link-arrow">→</span>
+          </a>
+          <a href="assets/KavinNaik_Resume.pdf" target="_blank" class="contact-link">
+            <div>
+              <div class="contact-link-label">Resume</div>
+              <div class="contact-link-value">Download PDF</div>
+            </div>
+            <span class="contact-link-arrow">↓</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span class="footer-copy">© 2025 Kavin Naik · Built for the Cloud Resume Challenge</span>
+    <span class="footer-badge"><span class="footer-dot"></span> Hosted on AWS · Deployed via GitHub Actions</span>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Visitor counter
+    const apiUrl = window.VISITOR_COUNT_API_URL;
+    if (apiUrl) {
+      fetch(apiUrl)
+        .then(r => r.json())
+        .then(data => {
+          const el = document.getElementById('visitor-count');
+          if (el && data.count !== undefined) el.textContent = data.count.toLocaleString();
+        })
+        .catch(() => {});
+    }
+  </script>
+</body>
 </html>
-
