@@ -57,7 +57,7 @@
 
     .nav-logo {
       font-family: var(--font-display);
-      font-size: 1.25rem;
+      font-size: 1.75rem;
       color: var(--text);
       text-decoration: none;
       letter-spacing: -0.01em;
@@ -725,7 +725,7 @@
   <!-- ── HERO ── -->
   <section id="hero">
     <div class="hero">
-      <span class="hero-eyebrow">Cloud Resume Challenge · Mumbai, India</span>
+      <span class="hero-eyebrow">Kavin Naik · Building in the cloud · Mumbai, India</span>
       <h1 class="hero-title">
         Building <em>reliable</em><br>cloud infrastructure
       </h1>
@@ -763,7 +763,7 @@
         <div class="reveal">
           <h2 class="about-headline">Cloud and DevOps, <em>done right</em></h2>
           <p class="about-body">
-            I'm a recent CS &amp; Design graduate who enjoys what goes on behind the scenes of modern applications. From provisioning scalable infrastructure on AWS to automating deployments with Docker, Kubernetes, and CI/CD — I like building systems that are reliable, reproducible, and production-ready.
+            My name is Kavin Naik and I'm a recent CS &amp; Design graduate who enjoys what goes on behind the scenes of modern applications. From provisioning scalable infrastructure on AWS to automating deployments with Docker, Kubernetes, and CI/CD — I like building systems that are reliable, reproducible, and production-ready.
           </p>
           <p class="about-body" style="margin-top:16px;">
             I earned my BE in Computer Science &amp; Design from New Horizon Institute of Technology and Management, Thane (2021–2025, CGPA 6.95), where I led student technical councils and organised workshops for 200+ students.
@@ -1139,7 +1139,7 @@
     reveals.forEach(el => observer.observe(el));
 
     // Visitor counter
-    const apiUrl = window.VISITOR_COUNT_API_URL;
+    const apiUrl = "https://qfnze65tw6.execute-api.ap-south-1.amazonaws.com/visitors";
     if (apiUrl) {
       fetch(apiUrl)
         .then(r => r.json())
