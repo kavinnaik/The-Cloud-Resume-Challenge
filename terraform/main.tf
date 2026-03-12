@@ -100,8 +100,12 @@ resource "aws_cloudfront_distribution" "site" {
     }
   }
 
+  aliases = ["kavinbuilds.cloud", "www.kavinbuilds.cloud"]
+
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn      = aws_acm_certificate_validation.cert.certificate_arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
   }
 
   tags = local.common_tags

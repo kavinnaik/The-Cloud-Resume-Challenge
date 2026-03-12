@@ -57,7 +57,7 @@
 
     .nav-logo {
       font-family: var(--font-display);
-      font-size: 1.75rem;
+      font-size: 1.25rem;
       color: var(--text);
       text-decoration: none;
       letter-spacing: -0.01em;
@@ -687,53 +687,22 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      nav { padding: 16px 20px; }
+      nav { padding: 16px 24px; }
       .nav-links { display: none; }
-      section { padding: 64px 20px; }
-      .hero { padding: 100px 20px 60px; }
-      .hero-title { font-size: 2.6rem; }
-      .hero-actions { flex-direction: column; align-items: flex-start; gap: 14px; }
-      .hero-meta { gap: 28px; flex-wrap: wrap; }
-
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-
-      .skills-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
-
-      .projects-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      section { padding: 72px 24px; }
+      .hero { padding: 100px 24px 60px; }
+      .about-grid, .contact-grid, .edu-card { grid-template-columns: 1fr; gap: 40px; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .certs-grid { grid-template-columns: 1fr 1fr; }
       .project-card { grid-template-columns: 1fr; gap: 24px; }
-
-      .exp-card { grid-template-columns: 1fr; gap: 8px; }
-      .exp-meta { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px; padding-top: 0; }
-
-      .certs-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-
-      .arch-diagram { grid-template-columns: 1fr; gap: 32px; }
-
-      .edu-card { grid-template-columns: 1fr; gap: 32px; padding: 28px; }
-
-      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-
-      footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px 20px; }
+      .exp-card { grid-template-columns: 1fr; gap: 12px; }
+      .arch-diagram { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
     }
-
     @media (max-width: 600px) {
-      .hero-title { font-size: 2rem; }
-      .hero-eyebrow { font-size: 0.75rem; }
-      .hero-meta { gap: 20px; }
-      .hero-divider { display: none; }
-
+      .hero-meta { flex-wrap: wrap; gap: 24px; }
       .skills-grid { grid-template-columns: 1fr; }
-      .skill-card { padding: 24px 20px; }
-
       .certs-grid { grid-template-columns: 1fr; }
-
-      .project-card { padding: 32px 0; }
-      .project-title { font-size: 1.4rem; }
-
-      .contact-headline { font-size: 2.2rem; }
-
-      .arch-diagram { padding: 28px 20px; }
-      .edu-card { padding: 24px 16px; }
     }
   </style>
 </head>
@@ -756,7 +725,7 @@
   <!-- ── HERO ── -->
   <section id="hero">
     <div class="hero">
-      <span class="hero-eyebrow">Kavin Naik · Building in the cloud · Mumbai, India</span>
+      <span class="hero-eyebrow">Cloud Resume Challenge · Mumbai, India</span>
       <h1 class="hero-title">
         Building <em>reliable</em><br>cloud infrastructure
       </h1>
@@ -794,7 +763,7 @@
         <div class="reveal">
           <h2 class="about-headline">Cloud and DevOps, <em>done right</em></h2>
           <p class="about-body">
-            My name is Kavin Naik and I'm a recent CS &amp; Design graduate who enjoys what goes on behind the scenes of modern applications. From provisioning scalable infrastructure on AWS to automating deployments with Docker, Kubernetes, and CI/CD — I like building systems that are reliable, reproducible, and production-ready.
+            I'm a recent CS &amp; Design graduate who enjoys what goes on behind the scenes of modern applications. From provisioning scalable infrastructure on AWS to automating deployments with Docker, Kubernetes, and CI/CD — I like building systems that are reliable, reproducible, and production-ready.
           </p>
           <p class="about-body" style="margin-top:16px;">
             I earned my BE in Computer Science &amp; Design from New Horizon Institute of Technology and Management, Thane (2021–2025, CGPA 6.95), where I led student technical councils and organised workshops for 200+ students.
@@ -976,10 +945,9 @@
             <span class="exp-type">Internship</span>
           </div>
           <div class="exp-content">
-            <div class="exp-company">
-              <img src="assets/images/f13tech_logo.jpg" alt="F13 Technologies" style="width:32px;height:32px;object-fit:contain;border-radius:6px;margin-right:10px;vertical-align:middle;">
-              F13 Technologies
-            </div>
+            <div class="exp-company"><img src="assets/images/f13tech_logo.jpg" alt="F13 Technologies" style="width:32px;height:32px;object-fit:contain;border-radius:6px;margin-right:10px;vertical-align:middle;">
+  F13 Technologies
+</div>
             <div class="exp-role">AWS Cloud Intern</div>
             <ul class="exp-bullets">
               <li>Led a team of 5+ interns to build and deploy cloud-based solutions, improving efficiency by 25% through standardised deployment practices.</li>
@@ -995,10 +963,7 @@
             <span class="exp-type">Internship</span>
           </div>
           <div class="exp-content">
-            <div class="exp-company">
-              <img src="assets/images/shripriti_logo.jpg" alt="Shripriti" style="width:32px;height:32px;object-fit:contain;border-radius:6px;margin-right:10px;vertical-align:middle;">
-              Shripriti Educational & IT Hub
-            </div>
+            <div class="exp-company">Shripriti Educational & IT Hub</div>
             <div class="exp-role">Web Development Intern</div>
             <ul class="exp-bullets">
               <li>Built and deployed three responsive web applications using HTML, CSS, JavaScript, and React.</li>
@@ -1170,7 +1135,7 @@
     reveals.forEach(el => observer.observe(el));
 
     // Visitor counter
-    const apiUrl = "https://qfnze65tw6.execute-api.ap-south-1.amazonaws.com/visitors";
+    const apiUrl = window.VISITOR_COUNT_API_URL;
     if (apiUrl) {
       fetch(apiUrl)
         .then(r => r.json())
