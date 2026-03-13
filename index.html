@@ -22,17 +22,6 @@
       --font-display: 'Instrument Serif', Georgia, serif;
       --font-body: 'DM Sans', sans-serif;
     }
-    
-    [data-theme="dark"] {
-      --bg: #111110;
-      --surface: #1a1917;
-      --border: #2a2825;
-      --text: #f0ede8;
-      --muted: #8a8480;
-      --accent: #c8a97e;
-      --accent-dark: #d4b896;
-      --tag-bg: #222120;
-    }
 
     html { scroll-behavior: smooth; }
 
@@ -754,22 +743,6 @@
       font-weight: 500;
     }
 
-    /* ── THEME TOGGLE ── */
-    .theme-toggle {
-      background: var(--tag-bg);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
-      font-size: 1rem;
-    }
-    .theme-toggle:hover { background: var(--border); }    
-
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 16px 20px; }
@@ -837,9 +810,6 @@
       <li><a href="#contact">Contact</a></li>
       <li><a href="assets/KavinNaik_Resume.pdf" class="nav-cta" target="_blank">Resume ↓</a></li>
     </ul>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-      <span class="theme-icon">🌙</span>
-    </button>
     <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span>
       <span></span>
@@ -1254,21 +1224,6 @@
   </footer>
 
   <script>
-    // Dark mode toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.querySelector('.theme-icon');
-
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-
-    themeToggle.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      themeIcon.textContent = next === 'dark' ? '☀️' : '🌙';
-    });
     // Nav scroll effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
