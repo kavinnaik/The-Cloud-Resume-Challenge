@@ -1213,6 +1213,15 @@
             <span class="contact-link-arrow">↓</span>
           </a>
         </div>
+        <div class="contact-form-wrap reveal" style="margin-top:40px;">
+          <form id="contact-form" style="display:flex;flex-direction:column;gap:16px;">
+            <input type="text" id="form-name" placeholder="Your name" required style="background:rgba(247,245,242,0.08);border:1px solid rgba(247,245,242,0.15);border-radius:12px;padding:14px 18px;font-size:0.95rem;color:var(--bg);font-family:var(--font-body);outline:none;"/>
+            <input type="email" id="form-email" placeholder="Your email" required style="background:rgba(247,245,242,0.08);border:1px solid rgba(247,245,242,0.15);border-radius:12px;padding:14px 18px;font-size:0.95rem;color:var(--bg);font-family:var(--font-body);outline:none;"/>
+            <textarea id="form-message" placeholder="Your message" rows="4" required style="background:rgba(247,245,242,0.08);border:1px solid rgba(247,245,242,0.15);border-radius:12px;padding:14px 18px;font-size:0.95rem;color:var(--bg);font-family:var(--font-body);outline:none;resize:none;"></textarea>
+            <button type="submit" id="form-submit" style="background:var(--accent);color:var(--text);border:none;border-radius:100px;padding:14px 32px;font-size:0.9rem;font-weight:500;cursor:pointer;font-family:var(--font-body);width:fit-content;">Send Message →</button>
+            <p id="form-status" style="font-size:0.85rem;min-height:20px;"></p>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -1278,6 +1287,46 @@
           if (el && data.count !== undefined) el.textContent = data.count.toLocaleString();
         })
         .catch(() => {});
+    }
+
+    // Contact form
+    const contactForm = document.getElementById("contact-form");
+    const formStatus = document.getElementById("form-status");
+    const formSubmit = document.getElementById("form-submit");
+
+    if (contactForm) {
+      contactForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        formSubmit.textContent = "Sending...";
+        formSubmit.disabled = true;
+        formStatus.style.color = "rgba(247,245,242,0.5)";
+        formStatus.textContent = "";
+        const payload = {
+          name:    document.getElementById("form-name").value,
+          email:   document.getElementById("form-email").value,
+          message: document.getElementById("form-message").value
+        };
+        try {
+          const res = await fetch("https://qfnze65tw6.execute-api.ap-south-1.amazonaws.com/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          if (res.ok) {
+            formStatus.style.color = "#c8a97e";
+            formStatus.textContent = "✓ Message sent! I will get back to you soon.";
+            contactForm.reset();
+          } else {
+            throw new Error("Failed");
+          }
+        } catch {
+          formStatus.style.color = "#e07070";
+          formStatus.textContent = "✗ Something went wrong. Please email me directly.";
+        } finally {
+          formSubmit.textContent = "Send Message →";
+          formSubmit.disabled = false;
+        }
+      });
     }
   </script>
 </body>
