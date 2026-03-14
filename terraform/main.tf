@@ -236,8 +236,8 @@ resource "aws_apigatewayv2_api" "visitor_api" {
   protocol_type = "HTTP"
 
   cors_configuration {
-    allow_origins = ["*"]
-    allow_methods = ["GET", "OPTIONS"]
+    allow_origins = ["https://kavinbuilds.cloud", "https://www.kavinbuilds.cloud"]
+    allow_methods = ["GET", "POST", "OPTIONS"]
     allow_headers = ["content-type"]
   }
 
