@@ -669,6 +669,8 @@
     }
 
     /* ── ANIMATIONS ── */
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .typed-cursor { display: inline-block; width: 3px; height: 0.85em; background: var(--accent); margin-left: 4px; vertical-align: middle; animation: blink 0.8s infinite; border-radius: 2px; }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -831,7 +833,7 @@
     <div class="hero">
       <span class="hero-eyebrow">Kavin Naik · Building in the cloud · Mumbai, India</span>
       <h1 class="hero-title">
-        Building <em>reliable</em><br>cloud infrastructure
+        Building <em id="typed-word"></em><br>cloud infrastructure
       </h1>
       <p class="hero-sub">
         Aspiring Cloud &amp; DevOps engineer specialising in AWS, Terraform, Kubernetes, and CI/CD pipelines that ship with confidence.
@@ -1328,6 +1330,38 @@
         }
       });
     }
+
+    // Typed text animation
+    const words = ["reliable", "scalable", "automated", "production-ready", "cloud-native"];
+    const typedEl = document.getElementById("typed-word");
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+    const cursor = document.createElement("span");
+    cursor.className = "typed-cursor";
+    typedEl.parentNode.insertBefore(cursor, typedEl.nextSibling);
+
+    function type() {
+      const current = words[wordIndex];
+      if (deleting) {
+        charIndex--;
+        typedEl.textContent = current.slice(0, charIndex);
+      } else {
+        charIndex++;
+        typedEl.textContent = current.slice(0, charIndex);
+      }
+      let speed = deleting ? 60 : 100;
+      if (!deleting && charIndex === current.length) {
+        speed = 1800;
+        deleting = true;
+      } else if (deleting && charIndex === 0) {
+        deleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        speed = 400;
+      }
+      setTimeout(type, speed);
+    }
+    setTimeout(type, 1000);
   </script>
 </body>
 </html>
