@@ -799,6 +799,7 @@
   </style>
 </head>
 <body>
+  <div id="progress-bar" style="position:fixed;top:0;left:0;height:3px;width:0%;background:var(--accent);z-index:999;transition:width 0.1s ease;border-radius:0 2px 2px 0;"></div>
 
   <!-- ── NAV ── -->
   <nav id="navbar">
@@ -1364,6 +1365,15 @@
       setTimeout(type, speed);
     }
     setTimeout(type, 1000);
+
+    // Scroll progress bar
+    const progressBar = document.getElementById("progress-bar");
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      progressBar.style.width = progress + "%";
+    });
   </script>
 </body>
 </html>
